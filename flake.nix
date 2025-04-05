@@ -22,6 +22,7 @@
           nativeBuildInputs = with pkgs; [
             nodejs
             bun
+            nodePackages.prettier
           ];
         };
       }
