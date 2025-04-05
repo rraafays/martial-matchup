@@ -20,9 +20,10 @@
       {
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
-            nodejs
             bun
             nodePackages.prettier
+            nodejs
+            supabase-cli
           ];
         };
       }
