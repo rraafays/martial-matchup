@@ -1,5 +1,5 @@
 {
-  description = "Build Shell with any dependency of the project";
+  description = "Martial Matchup Development Environment";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -19,15 +19,10 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          nativeBuildInputs =
-            with pkgs;
-            [
-              cargo
-              rustc
-              rustfmt
-              rust-analyzer
-            ]
-            ++ lib.optional stdenv.isDarwin libiconv;
+          nativeBuildInputs = with pkgs; [
+            nodejs
+            bun
+          ];
         };
       }
     );
