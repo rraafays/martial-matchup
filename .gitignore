@@ -30,6 +30,7 @@ yarn-error.*
 # local env files
 .direnv/
 .env*.local
+.env*.development
 .envrc
 
 # typescript
