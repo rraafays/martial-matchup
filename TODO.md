@@ -1,5 +1,5 @@
 - [x] Plan and model the database using Supabase
-- [ ] Set up user authentication with Supabase
+- [x] Set up user authentication with Supabase
 - [ ] Fetch user profile from Supabase
 - [ ] Implement profile update functionality with Supabase
 - [ ] Refine profile update logic
