@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "d77c9b96-e8f6-4e3a-a2f4-f593589405b7",
+		"name": "supabase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44234315"
+	},
+	"item": [
+		{
+			"name": "otp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"+18761234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/auth/v1/otp",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"auth",
+						"v1",
+						"otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"sms\",\n   \"phone\": \"+18761234567\",\n   \"token\": \"111111\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/auth/v1/verify",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"auth",
+						"v1",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
