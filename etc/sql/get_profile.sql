@@ -1,8 +1,3 @@
-SELECT
-    *
-FROM
-    get_profile();
-
 CREATE OR REPLACE FUNCTION get_profile()
     RETURNS TABLE(
         id uuid,
