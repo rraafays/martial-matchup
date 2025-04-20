@@ -1,0 +1,43 @@
+{
+  "name": "Java",
+  "date_of_birth": "1994-12-25",
+  "height_cm": 180,
+  "weight_kg": 120,
+  "area": "Montego Bay",
+  "latitude": 18.4996348427899,
+  "longitude": -77.9172923364458,
+  "fighting_style": 1,
+  "fight_type": 1,
+  "photos": [
+    {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "photo_url": "https://www.instagram.com/p/B0cV-XwB2ML/media?size=l",
+      "photo_order": 0
+    },
+    {
+      "id": "10000000-0000-0000-0000-000000000000",
+      "photo_url": "https://www.instagram.com/p/BhFvO_Kh036/media?size=l",
+      "photo_order": 1
+    },
+    {
+      "id": "20000000-0000-0000-0000-000000000000",
+      "photo_url": "https://www.instagram.com/p/Bb8jR-gj2SF/media?size=l",
+      "photo_order": 2
+    },
+    {
+      "id": "30000000-0000-0000-0000-000000000000",
+      "photo_url": "https://www.instagram.com/p/DCrVMrnsdm-/media?size=l",
+      "photo_order": 3
+    },
+    {
+      "id": "40000000-0000-0000-0000-000000000000",
+      "photo_url": "https://www.instagram.com/p/DCex002OCLP/media?size=l",
+      "photo_order": 4
+    },
+    {
+      "id": "50000000-0000-0000-0000-000000000000",
+      "photo_url": "https://www.instagram.com/p/C_JHSSitBbA/media?size=l",
+      "photo_order": 5
+    }
+  ]
+}

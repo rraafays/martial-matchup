@@ -1,0 +1,107 @@
+CREATE OR REPLACE FUNCTION update_profile(name text DEFAULT NULL, date_of_birth date DEFAULT NULL, height_cm integer DEFAULT NULL, weight_kg integer DEFAULT NULL, area text DEFAULT NULL, latitude float8 DEFAULT NULL, longitude float8 DEFAULT NULL, fighting_style integer DEFAULT NULL, fight_type integer DEFAULT NULL, photos jsonb DEFAULT NULL)
+    RETURNS void
+    LANGUAGE plpgsql
+    SECURITY DEFINER
+    AS $$
+DECLARE
+    v_profile_id uuid;
+    DECLARE photo jsonb;
+    DECLARE existing_photo record;
+    DECLARE new_photo_id uuid;
+    DECLARE active_photo_ids uuid[] := '{}';
+BEGIN
+    SELECT
+        profiles.id INTO v_profile_id
+    FROM
+        profiles
+    WHERE
+        user_id = auth.uid();
+    IF v_profile_id IS NULL THEN
+        RAISE EXCEPTION 'profile not found: %', auth.uid();
+    END IF;
+    UPDATE
+        profiles
+    SET
+        name = coalesce(update_profile.name, profiles.name),
+        date_of_birth = coalesce(update_profile.date_of_birth, profiles.date_of_birth),
+        height_cm = coalesce(update_profile.height_cm, profiles.height_cm),
+        weight_kg = coalesce(update_profile.weight_kg, profiles.weight_kg),
+        area = coalesce(update_profile.area, profiles.area),
+        latitude = coalesce(update_profile.latitude, profiles.latitude),
+        longitude = coalesce(update_profile.longitude, profiles.longitude),
+        fighting_style_id = coalesce(update_profile.fighting_style, profiles.fighting_style_id),
+        fight_type_id = coalesce(update_profile.fight_type, profiles.fight_type_id),
+        updated_at = now()
+    WHERE
+        profiles.id = v_profile_id;
+    IF photos IS NOT NULL THEN
+        FOR photo IN (
+            SELECT
+                *
+            FROM
+                jsonb_array_elements(update_profile.photos))
+            LOOP
+                IF photo ->> 'id' IS NOT NULL THEN
+                    SELECT
+                        id,
+                        photo_url,
+                        active INTO existing_photo
+                    FROM
+                        profile_photos
+                    WHERE
+                        id =(photo ->> 'id')::uuid
+                        AND profile_photos.profile_id = v_profile_id;
+                    IF found THEN
+                        IF existing_photo.photo_url IS DISTINCT FROM (photo ->> 'photo_url') THEN
+                            UPDATE
+                                profile_photos
+                            SET
+                                active = FALSE
+                            WHERE
+                                id = existing_photo.id;
+                            new_photo_id := gen_random_uuid();
+                            INSERT INTO profile_photos(id, profile_id, photo_url, photo_order, active)
+                                VALUES (new_photo_id, v_profile_id,(photo ->> 'photo_url'),
+(photo ->> 'photo_order')::integer, TRUE);
+                            active_photo_ids := array_append(active_photo_ids, new_photo_id);
+                        ELSE
+                            UPDATE
+                                profile_photos
+                            SET
+                                active = TRUE,
+                                photo_order =(photo ->> 'photo_order')::integer
+                            WHERE
+                                id = existing_photo.id;
+                            active_photo_ids := array_append(active_photo_ids, existing_photo.id);
+                        END IF;
+                    END IF;
+                ELSE
+                    new_photo_id := gen_random_uuid();
+                    INSERT INTO profile_photos(id, profile_id, photo_url, photo_order, active)
+                        VALUES (new_photo_id, v_profile_id,(photo ->> 'photo_url'),
+(photo ->> 'photo_order')::integer, TRUE);
+                    active_photo_ids := array_append(active_photo_ids, new_photo_id);
+                END IF;
+            END LOOP;
+        IF jsonb_array_length(update_profile.photos) = 0 THEN
+            UPDATE
+                profile_photos
+            SET
+                active = FALSE
+            WHERE
+                profile_photos.profile_id = v_profile_id
+                AND active = TRUE;
+        ELSE
+            UPDATE
+                profile_photos
+            SET
+                active = FALSE
+            WHERE
+                profile_photos.profile_id = v_profile_id
+                AND active = TRUE
+                AND id <> ALL (active_photo_ids);
+        END IF;
+    END IF;
+END;
+$$;
+
