@@ -120,7 +120,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Java\",\n  \"date_of_birth\": \"1994-12-25\",\n  \"height_cm\": 180,\n  \"weight_kg\": 120,\n  \"area\": \"Montego Bay\",\n  \"latitude\": 18.4996348427899,\n  \"longitude\": -77.9172923364458,\n\t\"years_of_experience\": 0,\n  \"fighting_style\": 1,\n  \"fight_type\": 1,\n  \"photos\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/B0cV-XwB2ML/media?size=l\",\n      \"photo_order\": 0\n    },\n    {\n      \"id\": \"10000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/BhFvO_Kh036/media?size=l\",\n      \"photo_order\": 1\n    },\n    {\n      \"id\": \"20000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/Bb8jR-gj2SF/media?size=l\",\n      \"photo_order\": 2\n    },\n    {\n      \"id\": \"30000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/DCrVMrnsdm-/media?size=l\",\n      \"photo_order\": 3\n    },\n    {\n      \"id\": \"40000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/DCex002OCLP/media?size=l\",\n      \"photo_order\": 4\n    },\n    {\n      \"id\": \"50000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/C_JHSSitBbA/media?size=l\",\n      \"photo_order\": 5\n    }\n  ]\n}",
+					"raw": "{\n  \"name\": \"Java\",\n  \"date_of_birth\": \"1994-12-25\",\n  \"height_cm\": 180,\n  \"weight_kg\": 120,\n  \"neighborhood\": \"Montego Bay\",\n  \"latitude\": 18.4996348427899,\n  \"longitude\": -77.9172923364458,\n  \"years_of_experience\": 0,\n  \"fighting_style\": 2,\n  \"fight_type\": 1,\n  \"photos\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/B0cV-XwB2ML/media?size=l\",\n      \"photo_order\": 0\n    },\n    {\n      \"id\": \"10000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/BhFvO_Kh036/media?size=l\",\n      \"photo_order\": 1\n    },\n    {\n      \"id\": \"20000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/Bb8jR-gj2SF/media?size=l\",\n      \"photo_order\": 2\n    },\n    {\n      \"id\": \"30000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/DCrVMrnsdm-/media?size=l\",\n      \"photo_order\": 3\n    },\n    {\n      \"id\": \"40000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/DCex002OCLP/media?size=l\",\n      \"photo_order\": 4\n    },\n    {\n      \"id\": \"50000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/C_JHSSitBbA/media?size=l\",\n      \"photo_order\": 5\n    }\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -159,7 +159,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"area\": \"Bay\",\n    \"latitude\": 10.4996348427899,\n    \"longitude\": -75.9172923364458\n}",
+					"raw": "{\n    \"neighborhood\": \"Montego Bay\",\n    \"latitude\": 18.5996348427899,\n    \"longitude\": -77.8172923364458\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -199,7 +199,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"distance\": 120\n}",
+					"raw": "{\n    \"distance\": 20\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -224,6 +224,46 @@
 					]
 				},
 				"description": "Generated from cURL: curl --location 'http://127.0.0.1:54321/rest/v1/rpc/update_distance' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"distance\": 160\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "get_profiles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page_size\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/get_profiles",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"get_profiles"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request GET 'http://127.0.0.1:54321/rest/v1/rpc/get_profiles' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"page_size\": 10\n}'"
 			},
 			"response": []
 		}
