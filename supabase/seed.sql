@@ -198,7 +198,7 @@ INSERT INTO "public"."profile_photos"("id", "profile_id", "photo_url", "photo_or
 
 INSERT INTO "public"."interaction_status"("id", "status")
     VALUES (1, 'skip'),
-(2, 'like'),
+(2, 'challenge'),
 (3, 'remove'),
 (4, 'match'),
 (5, 'unmatch'),

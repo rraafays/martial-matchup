@@ -23,7 +23,7 @@ CREATE OR REPLACE FUNCTION get_profiles(page_size integer)
 DECLARE
     v_profile_id uuid;
     current_profile profiles%rowtype;
-    like_status int := 2;
+    challenge_status int := 2;
     match_status int := 4;
     unmatch_status int := 5;
     review_status int := 6;
@@ -85,7 +85,7 @@ BEGIN
 WHERE (i_cp.status_id IS NULL
         OR i_cp.status_id IN (review_status, unmatch_status))
         AND (i_p.status_id IS NULL
-            OR i_p.status_id NOT IN (like_status, match_status))
+            OR i_p.status_id NOT IN (challenge_status, match_status))
     LIMIT get_profiles.page_size;
 END;
 $$;

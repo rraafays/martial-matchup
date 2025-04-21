@@ -8,7 +8,7 @@ DECLARE
     interaction_id uuid;
     skip_status int := 1;
     review_status int := 6;
-    like_status int := 2;
+    challenge_status int := 2;
 BEGIN
     SELECT
         profiles.id INTO actor
@@ -26,7 +26,7 @@ BEGIN
     WHERE
         interactions.actor_id = actor
         AND interactions.target_id = profile
-        AND interactions.status_id IN (skip_status, review_status, like_status);
+        AND interactions.status_id IN (skip_status, review_status, challenge_status);
     IF found THEN
         UPDATE
             interactions
