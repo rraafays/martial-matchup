@@ -408,6 +408,46 @@
 				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/get_challengers' \\\n-H \"Content-Type: application/json\" \\"
 			},
 			"response": []
+		},
+		{
+			"name": "remove_challenger",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"interaction\": \"542b907b-ab9c-4edc-a2fd-8e04eeced90a\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/remove_challenger",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"remove_challenger"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/remove_challenger' \\\n-d '{ \"interaction\": \"value\" }' \\\n-H \"Content-Type: application/json\" \\"
+			},
+			"response": []
 		}
 	],
 	"auth": {
