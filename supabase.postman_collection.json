@@ -266,6 +266,46 @@
 				"description": "Generated from cURL: curl --location --request GET 'http://127.0.0.1:54321/rest/v1/rpc/get_profiles' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"page_size\": 10\n}'"
 			},
 			"response": []
+		},
+		{
+			"name": "skip_profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"profile\": \"00000000-0000-0000-0000-000000000010\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/skip_profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"skip_profile"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/skip_profile' \\\n-d '{ \"profile\": \"value\" }' \\\n-H \"Content-Type: application/json\" \\"
+			},
+			"response": []
 		}
 	],
 	"auth": {
