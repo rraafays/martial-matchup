@@ -306,6 +306,37 @@
 				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/skip_profile' \\\n-d '{ \"profile\": \"value\" }' \\\n-H \"Content-Type: application/json\" \\"
 			},
 			"response": []
+		},
+		{
+			"name": "review_profiles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/review_profiles",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"review_profiles"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/review_profiles' \\\n-H \"Content-Type: application/json\" \\"
+			},
+			"response": []
 		}
 	],
 	"auth": {
