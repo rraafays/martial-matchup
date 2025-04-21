@@ -337,6 +337,77 @@
 				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/review_profiles' \\\n-H \"Content-Type: application/json\" \\"
 			},
 			"response": []
+		},
+		{
+			"name": "challenge_profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"photo\": \"10000000-0000-0000-0000-000000000010\",\n    \"profile\": \"00000000-0000-0000-0000-000000000010\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/challenge_profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"challenge_profile"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/challenge_profile' \\\n-d '{ \"photo\": \"value\", \"profile\": \"value\" }' \\\n-H \"Content-Type: application/json\" \\"
+			},
+			"response": []
+		},
+		{
+			"name": "get_challengers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/get_challengers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"get_challengers"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST 'http://127.0.0.1:54321/rest/v1/rpc/get_challengers' \\\n-H \"Content-Type: application/json\" \\"
+			},
+			"response": []
 		}
 	],
 	"auth": {
