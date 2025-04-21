@@ -159,7 +159,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"area\": \"Montego Bay\",\n    \"latitude\": 18.4996348427899,\n    \"longitude\": -77.9172923364458\n}",
+					"raw": "{\n    \"area\": \"Bay\",\n    \"latitude\": 10.4996348427899,\n    \"longitude\": -75.9172923364458\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -199,7 +199,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"distance\": 160\n}",
+					"raw": "{\n    \"distance\": 120\n}",
 					"options": {
 						"raw": {
 							"language": "json"
