@@ -30,6 +30,10 @@
             nodejs
             postman
             supabase-cli
+            (pkgs.writeShellScriptBin "api-test" ''
+              #!${pkgs.stdenv.shell}
+              ${pkgs.newman}/bin/newman run supabase.postman_collection.json
+            '')
           ];
         };
       }
