@@ -4,6 +4,10 @@ DROP FUNCTION IF EXISTS get_profile();
 
 DROP FUNCTION IF EXISTS update_profile(text, date, integer, integer, text, float8, float8, integer, integer, integer, jsonb);
 
+DROP FUNCTION IF EXISTS update_location(float8, float8, text);
+
+DROP FUNCTION IF EXISTS update_distance(integer);
+
 CREATE OR REPLACE FUNCTION get_profile()
     RETURNS TABLE(
         id uuid,
@@ -185,6 +189,62 @@ BEGIN
                 AND id <> ALL (active_photo_ids);
         END IF;
     END IF;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION update_location(latitude float8, longitude float8, neighborhood text)
+    RETURNS void
+    LANGUAGE plpgsql
+    SECURITY DEFINER
+    AS $$
+DECLARE
+    profile_id uuid;
+BEGIN
+    SELECT
+        id INTO profile_id
+    FROM
+        profiles
+    WHERE
+        user_id = auth.uid();
+    IF profile_id IS NULL THEN
+        RAISE EXCEPTION 'profile not found: %', auth.uid();
+    END IF;
+    UPDATE
+        profiles
+    SET
+        latitude = update_location.latitude,
+        longitude = update_location.longitude,
+        neighborhood = update_location.neighborhood,
+        updated_at = now()
+    WHERE
+        id = profile_id;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION update_distance(distance integer)
+    RETURNS void
+    LANGUAGE plpgsql
+    SECURITY DEFINER
+    AS $$
+DECLARE
+    profile_id uuid;
+BEGIN
+    SELECT
+        id INTO profile_id
+    FROM
+        profiles
+    WHERE
+        user_id = auth.uid();
+    IF profile_id IS NULL THEN
+        RAISE EXCEPTION 'profile not found: %', auth.uid();
+    END IF;
+    UPDATE
+        profiles
+    SET
+        max_distance_km = distance,
+        updated_at = now()
+    WHERE
+        id = profile_id;
 END;
 $$;
 
