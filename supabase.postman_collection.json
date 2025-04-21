@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "d77c9b96-e8f6-4e3a-a2f4-f593589405b7",
+		"name": "supabase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44234315"
+	},
+	"item": [
+		{
+			"name": "otp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"+18761234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/auth/v1/otp",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"auth",
+						"v1",
+						"otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.collectionVariables.set(\"token\", jsonData.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"sms\",\n   \"phone\": \"+18761234567\",\n   \"token\": \"111111\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/auth/v1/verify",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"auth",
+						"v1",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/get_profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"get_profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Java\",\n  \"date_of_birth\": \"1994-12-25\",\n  \"height_cm\": 180,\n  \"weight_kg\": 120,\n  \"area\": \"Montego Bay\",\n  \"latitude\": 18.4996348427899,\n  \"longitude\": -77.9172923364458,\n\t\"years_of_experience\": 0,\n  \"fighting_style\": 1,\n  \"fight_type\": 1,\n  \"photos\": [\n    {\n      \"id\": \"00000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/B0cV-XwB2ML/media?size=l\",\n      \"photo_order\": 0\n    },\n    {\n      \"id\": \"10000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/BhFvO_Kh036/media?size=l\",\n      \"photo_order\": 1\n    },\n    {\n      \"id\": \"20000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/Bb8jR-gj2SF/media?size=l\",\n      \"photo_order\": 2\n    },\n    {\n      \"id\": \"30000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/DCrVMrnsdm-/media?size=l\",\n      \"photo_order\": 3\n    },\n    {\n      \"id\": \"40000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/DCex002OCLP/media?size=l\",\n      \"photo_order\": 4\n    },\n    {\n      \"id\": \"50000000-0000-0000-0000-000000000000\",\n      \"photo_url\": \"https://www.instagram.com/p/C_JHSSitBbA/media?size=l\",\n      \"photo_order\": 5\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/update_profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"update_profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_location",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"area\": \"Montego Bay\",\n    \"latitude\": 18.4996348427899,\n    \"longitude\": -77.9172923364458\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/update_location",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"update_location"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://127.0.0.1:54321/rest/v1/rpc/update_location' \\\n    --header 'Content-Type: application/json' \\\n    --data '{\n    \"area\": \"Montego Bay\",\n    \"latitude\": 18.4996348427899,\n    \"longitude\": -77.9172923364458\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "update_distance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"distance\": 160\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:54321/rest/v1/rpc/update_distance",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "54321",
+					"path": [
+						"rest",
+						"v1",
+						"rpc",
+						"update_distance"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://127.0.0.1:54321/rest/v1/rpc/update_distance' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"distance\": 160\n}'"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
