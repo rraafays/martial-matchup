@@ -34,8 +34,7 @@ BEGIN
             status_id = skip_status,
             updated_at = now(),
             updated_by = actor,
-            photo_id = NULL,
-            answer_id = NULL
+            photo_id = NULL
         WHERE
             interactions.id = interaction_id;
         RETURN interaction_id;
