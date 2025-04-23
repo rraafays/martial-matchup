@@ -5,8 +5,12 @@ import { VideoView } from "expo-video";
 import { fonts } from "@/constants/fonts";
 import { useEffect } from "react";
 import { useFonts } from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
 
 cssInterop(VideoView, { className: { target: "style" } });
+cssInterop(Ionicons, { className: { target: "style" } });
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
     const [loaded, error] = useFonts(fonts);
