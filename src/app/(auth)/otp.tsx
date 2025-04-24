@@ -1,14 +1,26 @@
+import { useSignInWithOneTimePassword, useVerifyOneTimePassword } from "@/api/auth";
 import { ForwardActionButton } from "@/components/ForwardActionButton";
 import { StackHeader } from "@/components/StackHeader";
-import { router } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { useMemo, useState } from "react";
 import { StatusBar, Text, TextInput, View, KeyboardAvoidingView, Platform } from "react-native";
 import colors from "tailwindcss/colors";
 
 export default function Page() {
     const [oneTimePassword, setOneTimePassword] = useState("");
+    const { phoneNumber } = useLocalSearchParams<{ phoneNumber: string }>();
+    const {
+        mutate: verifyOneTimePassword,
+        isPending,
+        isError,
+        error,
+        reset,
+    } = useVerifyOneTimePassword();
 
     const handleOneTimePasswordChange = (text: string) => {
+        if (isError) {
+            reset();
+        }
         setOneTimePassword(text);
     };
 
@@ -16,7 +28,9 @@ export default function Page() {
         return oneTimePassword.length === 6;
     }, [oneTimePassword]);
 
-    const handleSubmit = () => {};
+    const handleSubmit = () => {
+        verifyOneTimePassword({ phoneNumber, token: oneTimePassword });
+    };
 
     return (
         <KeyboardAvoidingView
@@ -52,11 +66,17 @@ export default function Page() {
                         onChangeText={handleOneTimePasswordChange}
                         maxLength={6}
                     />
+                    {isError && (
+                        <Text className="text-red-800 text-sm text-center mt-4">
+                            {error.message}
+                        </Text>
+                    )}
                 </View>
                 <View className="items-end">
                     <ForwardActionButton
-                        disabled={!isValidOneTimePassword}
+                        disabled={!isValidOneTimePassword || isPending}
                         onPress={handleSubmit}
+                        loading={isPending}
                     />
                 </View>
             </View>

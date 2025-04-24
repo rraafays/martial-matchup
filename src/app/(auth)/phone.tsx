@@ -1,3 +1,4 @@
+import { useSignInWithOneTimePassword } from "@/api/auth";
 import { ForwardActionButton } from "@/components/ForwardActionButton";
 import { StackHeader } from "@/components/StackHeader";
 import { router, useFocusEffect } from "expo-router";
@@ -8,8 +9,18 @@ import colors from "tailwindcss/colors";
 export default function Page() {
     const [phoneNumber, setPhoneNumber] = useState("");
     const phoneNumberRef = useRef<TextInput>(null);
+    const {
+        mutate: signInWithOneTimePassword,
+        isPending,
+        isError,
+        error,
+        reset,
+    } = useSignInWithOneTimePassword();
 
     const handlePhoneNumberChange = (text: string) => {
+        if (isError) {
+            reset();
+        }
         setPhoneNumber(text);
     };
 
@@ -18,7 +29,11 @@ export default function Page() {
     }, [phoneNumber]);
 
     const handleSubmit = () => {
-        router.push({ pathname: "/otp", params: { phoneNumber } });
+        signInWithOneTimePassword(phoneNumber, {
+            onSuccess: () => {
+                router.push({ pathname: "/otp", params: { phoneNumber } });
+            },
+        });
     };
 
     useFocusEffect(() => {
@@ -49,9 +64,18 @@ export default function Page() {
                         maxLength={16}
                         ref={phoneNumberRef}
                     />
+                    {isError && (
+                        <Text className="text-red-800 text-sm text-center mt-4">
+                            {error.message}
+                        </Text>
+                    )}
                 </View>
                 <View className="items-end">
-                    <ForwardActionButton disabled={!isValidPhoneNumber} onPress={handleSubmit} />
+                    <ForwardActionButton
+                        disabled={!isValidPhoneNumber || isPending}
+                        onPress={handleSubmit}
+                        loading={isPending}
+                    />
                 </View>
             </View>
         </KeyboardAvoidingView>
