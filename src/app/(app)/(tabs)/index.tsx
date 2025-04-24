@@ -1,9 +1,12 @@
+import { useSignOut } from "@/api/auth";
 import { Text, View } from "react-native";
 
 export default function Page() {
+    const { mutate } = useSignOut();
+
     return (
         <View>
-            <Text>index</Text>
+            <Text onPress={() => mutate()}>index</Text>
         </View>
     );
 }
