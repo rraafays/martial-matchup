@@ -3,7 +3,7 @@ import { Link, Stack } from "expo-router";
 import { Pressable, StatusBar, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "tailwindcss/colors";
-import Logo from "~/assets/images/full-logo.svg";
+import Logo from "~/assets/images/full-minimal-logo.svg";
 
 export default function Page() {
     return (
@@ -16,9 +16,9 @@ export default function Page() {
             />
             <VideoBackground source={require("~/assets/images/background.mp4")}>
                 <SafeAreaView className="flex-1 p-10">
-                    <View className="flex-1 items-center">
-                        <Logo fill={colors.white} width={400} height={400} />
-                        <Text className="text-white text-2xl font-poppins-semibold">
+                    <View className="flex-1 items-center -mt-10">
+                        <Logo fill={colors.white} width={450} height={450} />
+                        <Text className="text-white text-2xl font-poppins-semibold -mt-20">
                             Get ready for the next battle
                         </Text>
                     </View>
