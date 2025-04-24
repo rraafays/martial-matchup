@@ -34,6 +34,13 @@
               #!${pkgs.stdenv.shell}
               ${pkgs.newman}/bin/newman run ${toString ./.}/supabase.postman_collection.json
             '')
+            (pkgs.writeShellScriptBin "dev" ''
+              #!${pkgs.stdenv.shell}
+              IP=$(ipconfig getifaddr en0)
+              export EXPO_PUBLIC_SUPABASE_URL="http://''${IP}:54321"
+              echo $EXPO_PUBLIC_SUPABASE_URL
+              ${pkgs.bun}/bin/bun start
+            '')
           ];
         };
       }
