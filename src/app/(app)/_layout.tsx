@@ -16,8 +16,10 @@ export default function Layout() {
 
     return (
         <>
-            <StatusBar barStyle="dark-content" translucent={true} />
-            <Stack screenOptions={{ headerShown: false }} />
+            <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="(tabs)" options={{ animation: "none" }} />
+                <Stack.Screen name="settings" options={{ animation: "slide_from_bottom" }} />
+            </Stack>
         </>
     );
 }

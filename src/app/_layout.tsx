@@ -41,7 +41,8 @@ export default function Layout() {
         <QueryClientProvider client={queryClient}>
             <AuthProvider>
                 <Stack screenOptions={{ headerShown: false }}>
-                    <Stack.Screen name="(app)" />
+                    <Stack.Screen name="(app)" options={{ animation: "none" }} />
+                    <Stack.Screen name="(auth)" options={{ animation: "none" }} />
                 </Stack>
             </AuthProvider>
         </QueryClientProvider>
