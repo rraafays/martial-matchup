@@ -1,0 +1,39 @@
+interface PrivateProfile {
+    id: string;
+    name: string;
+    date_of_birth: string;
+    height_cm: number;
+    weight_kg: number;
+    neighborhood: string;
+    latitude: number;
+    longitude: number;
+    max_distance_km: number;
+    phone: string;
+    years_of_experience: number;
+    fighting_style: Option | null;
+    fight_type: Option | null;
+    photos: Photo[];
+    avatar_url: string;
+}
+
+interface FightingStyle {
+    id: number;
+    name: string;
+}
+
+interface FightType {
+    id: number;
+    type: string;
+}
+
+interface Photo {
+    id: string;
+    photo_url: string;
+    photo_order: number;
+}
+
+interface Option {
+    id: number;
+    name: string;
+    plural_name?: string;
+}
