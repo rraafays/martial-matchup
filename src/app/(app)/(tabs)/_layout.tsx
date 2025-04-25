@@ -1,8 +1,13 @@
 import { Tabs } from "expo-router";
 import colors from "tailwindcss/colors";
 import { Ionicons } from "@expo/vector-icons";
+import { useMyProfile } from "@/api/my-profile";
+import { View } from "react-native";
+import { Image } from "expo-image";
+import { cn } from "@/utils/cn";
 
 export default function Layout() {
+    const { data: profile } = useMyProfile();
     return (
         <Tabs
             screenOptions={{
@@ -39,9 +44,17 @@ export default function Layout() {
             <Tabs.Screen
                 name="martialMatchup"
                 options={{
-                    tabBarIcon: ({ color, size }: { color: string; size: number }) => (
-                        <Ionicons name="ribbon" size={size} color={color} />
-                    ),
+                    tabBarIcon: ({ color, size }: { color: string; size: number }) =>
+                        profile && profile.avatar_url ? (
+                            <View style={{ width: size, height: size }}>
+                                <Image
+                                    source={profile.avatar_url}
+                                    className="flex-1 aspect-square rounded-full bg-black"
+                                />
+                            </View>
+                        ) : (
+                            <Ionicons name="ribbon" size={size} color={color} />
+                        ),
                 }}
             />
         </Tabs>
