@@ -1,4 +1,5 @@
 import { useAuth } from "@/store/auth";
+import { EditProvider } from "@/store/edit";
 import { Redirect, Stack } from "expo-router";
 import { StatusBar } from "react-native";
 import { Text } from "react-native-svg";
@@ -15,12 +16,12 @@ export default function Layout() {
     }
 
     return (
-        <>
+        <EditProvider>
             <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(tabs)" options={{ animation: "none" }} />
                 <Stack.Screen name="settings" />
                 <Stack.Screen name="profile" />
             </Stack>
-        </>
+        </EditProvider>
     );
 }

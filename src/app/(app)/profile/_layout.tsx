@@ -1,9 +1,11 @@
 import { useMyProfile } from "@/api/my-profile";
 import { StackHeaderV3 } from "@/components/StackHeaderV3";
+import { useEdit } from "@/store/edit";
 import { router, Stack } from "expo-router";
 
 export default function Layout() {
     const { data: profile } = useMyProfile();
+    const { edits } = useEdit();
 
     const handlePressCancel = () => {
         router.dismiss();
@@ -16,7 +18,7 @@ export default function Layout() {
     return (
         <>
             <StackHeaderV3
-                title={profile?.name || "Edit"}
+                title={edits?.name || "Edit"}
                 onPressCancel={handlePressCancel}
                 onPressDone={handlePressDone}
             />

@@ -14,6 +14,7 @@ export interface PublicProfile {
     weight_kg: number;
     years_of_experience: number;
     name: string;
+    neighborhood: string;
 }
 
 export interface Photo {

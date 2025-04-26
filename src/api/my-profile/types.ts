@@ -1,4 +1,4 @@
-interface PrivateProfile {
+export interface PrivateProfile {
     id: string;
     name: string;
     date_of_birth: string;
@@ -16,23 +16,23 @@ interface PrivateProfile {
     avatar_url: string;
 }
 
-interface FightingStyle {
+export interface FightingStyle {
     id: number;
     name: string;
 }
 
-interface FightType {
+export interface FightType {
     id: number;
     type: string;
 }
 
-interface Photo {
+export interface Photo {
     id: string;
     photo_url: string;
     photo_order: number;
 }
 
-interface Option {
+export interface Option {
     id: number;
     name: string;
     plural_name?: string;
