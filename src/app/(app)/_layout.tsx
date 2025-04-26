@@ -18,7 +18,8 @@ export default function Layout() {
         <>
             <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(tabs)" options={{ animation: "none" }} />
-                <Stack.Screen name="settings" options={{ animation: "slide_from_bottom" }} />
+                <Stack.Screen name="settings" />
+                <Stack.Screen name="profile" />
             </Stack>
         </>
     );

@@ -31,7 +31,7 @@ export default function Page() {
                 <View className="items-center gap-2 my-12">
                     <Pressable
                         className="h-32 aspect-square rounded-full border-4 border-black p-1"
-                        onPress={() => router.push("/")}
+                        onPress={() => router.push("/profile")}
                     >
                         <Image
                             source={profile?.avatar_url}
