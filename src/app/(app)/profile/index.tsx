@@ -26,7 +26,7 @@ export default function Profile() {
                 <PhotoGrid profile={edits} />
                 <View className="h-10" />
             </View>
-            <View className="px-5">
+            <View className="px-5 pb-10">
                 <List title="Details" data={details} profile={edits} />
             </View>
         </ScrollView>

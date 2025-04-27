@@ -1,4 +1,4 @@
-INSERT INTO "public"."fight_types"("id", "type")
+INSERT INTO "public"."fight_types"("id", "name")
     VALUES (1, 'Charity'),
 (2, 'Sparring'),
 (3, 'Interclub'),

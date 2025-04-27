@@ -37,15 +37,15 @@ export type Database = {
       fight_types: {
         Row: {
           id: number
-          type: string | null
+          name: string | null
         }
         Insert: {
           id?: number
-          type?: string | null
+          name?: string | null
         }
         Update: {
           id?: number
-          type?: string | null
+          name?: string | null
         }
         Relationships: []
       }
