@@ -7,6 +7,7 @@ export interface Profile {
 
 export interface Trait {
     key: string;
+    name: string;
     icon: string;
     label: string | null;
 }
