@@ -65,7 +65,7 @@ export const useReviewProfiles = () => {
 
 export const useChallengers = () => {
     return useQuery<Challenge[]>({
-        queryKey: ["likes"],
+        queryKey: ["challengers"],
         queryFn: async () => {
             const { data, error } = await supabase.rpc("get_challengers").returns<Challenge[]>();
 
@@ -79,7 +79,7 @@ export const useChallengers = () => {
     });
 };
 
-export const useRemoveLike = () => {
+export const useRemoveChallenger = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
@@ -93,7 +93,7 @@ export const useRemoveLike = () => {
             }
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ["likes"] });
+            await queryClient.invalidateQueries({ queryKey: ["challengers"] });
         },
     });
 };
@@ -112,7 +112,7 @@ export const useMatch = () => {
             }
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ["likes"] });
+            await queryClient.invalidateQueries({ queryKey: ["challengers"] });
         },
     });
 };
