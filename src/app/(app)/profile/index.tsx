@@ -4,28 +4,58 @@ import { useEdit } from "@/store/edit";
 import { ScrollView, Text, View } from "react-native";
 import { details } from "@/utils/details";
 import { StackHeaderV3 } from "@/components/StackHeaderV3";
-import { useMyProfile } from "@/api/my-profile";
+import { useMyProfile, useUpdateProfile } from "@/api/my-profile";
 import { router } from "expo-router";
+import { isEqual } from "lodash";
+import { Alert } from "react-native";
+import colors from "tailwindcss/colors";
 
-export default function Profile() {
-    const { edits, gridActive } = useEdit();
+export default function Layout() {
     const { data: profile } = useMyProfile();
+    const { edits, setEdits, gridActive } = useEdit();
+    const { mutate } = useUpdateProfile();
 
-    const handlePressCancel = () => {
-        router.dismiss();
+    const handlePressCancel = async () => {
+        if (isEqual(profile, edits)) {
+            router.dismiss();
+            return;
+        }
+
+        Alert.alert("Discard Changes", "Are you sure you want to discard your changes?", [
+            {
+                text: "Cancel",
+                style: "cancel",
+            },
+            {
+                text: "Discard",
+                onPress: () => {
+                    setEdits(profile);
+                    router.dismiss();
+                },
+            },
+        ]);
     };
 
-    const handlePressDone = () => {
-        router.dismiss();
-    };
+    const handlePressDone = async () => {
+        if (!edits) {
+            Alert.alert("Error", "Something went wrong, please try again later");
+            return;
+        }
 
-    if (!edits) {
-        return (
-            <View className="flex-1 justify-center items-center bg-white">
-                <Text>Something went wrong.</Text>
-            </View>
-        );
-    }
+        if (isEqual(profile, edits)) {
+            router.dismiss();
+            return;
+        }
+
+        mutate(edits, {
+            onSuccess: () => {
+                router.dismiss();
+            },
+            onError: () => {
+                Alert.alert("Error", "Something went wrong, please try again later");
+            },
+        });
+    };
 
     return (
         <ScrollView
@@ -40,11 +70,11 @@ export default function Profile() {
             />
             <View className="px-5">
                 <Text className="text-base font-poppins-semibold mb-2">Showcase</Text>
-                <PhotoGrid profile={edits} />
+                <PhotoGrid profile={edits!} />
                 <View className="h-10" />
             </View>
             <View className="px-5 pb-10">
-                <List title="Details" data={details} profile={edits} />
+                <List title="Details" data={details} profile={edits!} />
             </View>
         </ScrollView>
     );
