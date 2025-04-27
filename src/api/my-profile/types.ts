@@ -35,5 +35,4 @@ export interface Photo {
 export interface Option {
     id: number;
     name: string;
-    plural_name?: string;
 }
