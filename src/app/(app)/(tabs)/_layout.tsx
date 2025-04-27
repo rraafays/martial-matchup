@@ -31,6 +31,7 @@ export default function Layout() {
                     tabBarIcon: ({ color, size }: { color: string; size: number }) => (
                         <Ionicons name="skull" size={size} color={color} />
                     ),
+                    headerShown: false,
                 }}
             />
             <Tabs.Screen
