@@ -38,14 +38,7 @@ export const useSkipProfile = () => {
 
 export const useChallengeProfile = () => {
     return useMutation({
-        mutationFn: async ({
-            profile,
-            photo,
-        }: {
-            profile: string;
-            answer: string | undefined;
-            photo: string | undefined;
-        }) => {
+        mutationFn: async ({ profile, photo }: { profile: string; photo: string | undefined }) => {
             const { error } = await supabase.rpc("challenge_profile", {
                 profile,
                 photo,

@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { PrivateProfile } from "./types";
 
 export const useMyProfile = () => {
     return useQuery<PrivateProfile | null>({
@@ -16,6 +17,7 @@ export const useMyProfile = () => {
 export const useUpdateProfile = () => {
     const queryClient = useQueryClient();
     return useMutation({
+        mutationKey: ["updateProfile"],
         mutationFn: async (profile: PrivateProfile) => {
             const photos = profile.photos.map(({ id, photo_url, photo_order }) => {
                 return { id, photo_url, photo_order };
