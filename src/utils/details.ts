@@ -28,7 +28,7 @@ export const details = [
         getValue: (profile: PrivateProfile) => {
             return profile?.weight_kg ? profile?.weight_kg + " kg" : "None";
         },
-        route: "/profile/height",
+        route: "/profile/weight",
     },
     {
         title: "Location",
