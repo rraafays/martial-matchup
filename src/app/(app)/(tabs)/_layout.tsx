@@ -2,12 +2,17 @@ import { Tabs } from "expo-router";
 import colors from "tailwindcss/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useMyProfile } from "@/api/my-profile";
-import { View } from "react-native";
+import { View, ActivityIndicator } from "react-native"; // import ActivityIndicator
 import { Image } from "expo-image";
 import { cn } from "@/utils/cn";
 
 export default function Layout() {
-    const { data: profile } = useMyProfile();
+    const { data: profile, isLoading } = useMyProfile(); // watch loading state
+
+    if (isLoading) {
+        return <ActivityIndicator size="large" color="black" />; // wait until profile loaded
+    }
+
     return (
         <Tabs
             screenOptions={{

@@ -1,8 +1,7 @@
 import { useAuth } from "@/store/auth";
 import { EditProvider } from "@/store/edit";
 import { Redirect, Stack } from "expo-router";
-import { StatusBar } from "react-native";
-import { Text } from "react-native-svg";
+import { Text } from "react-native";
 
 export default function Layout() {
     const { session, isLoading } = useAuth();
