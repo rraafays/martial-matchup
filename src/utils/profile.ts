@@ -6,14 +6,14 @@ import { age } from "./age";
 const traitsMapping = [
     {
         key: "date_of_birth",
-        icon: "calendar-clear-outline",
+        icon: "cake",
         privateLabel: (profile: PrivateProfile) =>
             profile.date_of_birth ? `${age(profile.date_of_birth)}` : null,
         publicLabel: (profile: PublicProfile) => (profile.age ? `${profile.age.toString()}` : null),
     },
     {
         key: "height_cm",
-        icon: "resize-outline",
+        icon: "height",
         privateLabel: (profile: PrivateProfile) =>
             profile.height_cm ? `${profile.height_cm} cm` : null,
         publicLabel: (profile: PublicProfile) =>
@@ -21,7 +21,7 @@ const traitsMapping = [
     },
     {
         key: "weight_kg",
-        icon: "scale-outline",
+        icon: "weight",
         privateLabel: (profile: PrivateProfile) =>
             profile.weight_kg ? `${profile.weight_kg} kg` : null,
         publicLabel: (profile: PublicProfile) =>
@@ -29,19 +29,19 @@ const traitsMapping = [
     },
     {
         key: "location",
-        icon: "earth-outline",
+        icon: "earth",
         privateLabel: (profile: PrivateProfile) => profile.neighborhood,
         publicLabel: (profile: PublicProfile) => profile.neighborhood,
     },
     {
         key: "fighting_style",
-        icon: "ribbon-outline",
+        icon: "sports-martial-arts",
         privateLabel: (profile: PrivateProfile) => profile.fighting_style?.name,
         publicLabel: (profile: PublicProfile) => profile.fighting_style || null,
     },
     {
         key: "fight_type",
-        icon: "trophy-outline",
+        icon: "tournament",
         privateLabel: (profile: PrivateProfile) => profile.fight_type?.name,
         publicLabel: (profile: PublicProfile) => profile.fight_type || null,
     },

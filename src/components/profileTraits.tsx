@@ -1,6 +1,6 @@
 import { Profile } from "@/types/profile";
 import { cn } from "@/utils/cn";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { FC } from "react";
 import { ScrollView, Text, View } from "react-native";
 
@@ -14,6 +14,9 @@ export const ProfileTraits: FC<Props> = ({ profile }) => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {profile?.traits.map(({ key, icon, label }, index) => {
                     if (!label) return null;
+
+                    const isInMaterialIcons = Object.keys(MaterialIcons.glyphMap).includes(icon);
+
                     return (
                         <View key={key} className="py-2">
                             <View
@@ -22,10 +25,17 @@ export const ProfileTraits: FC<Props> = ({ profile }) => {
                                     { "border-r-[0.25px]": index !== profile.traits.length - 1 },
                                 )}
                             >
-                                <Ionicons
-                                    name={icon as keyof typeof Ionicons.glyphMap}
-                                    className="text-2xl"
-                                />
+                                {isInMaterialIcons ? (
+                                    <MaterialIcons
+                                        name={icon as keyof typeof MaterialIcons.glyphMap}
+                                        size={24}
+                                    />
+                                ) : (
+                                    <MaterialCommunityIcons
+                                        name={icon as keyof typeof MaterialCommunityIcons.glyphMap}
+                                        size={24}
+                                    />
+                                )}
                                 <Text>{label}</Text>
                             </View>
                         </View>
