@@ -5,12 +5,13 @@ import { age } from "./age";
 
 const traitsMapping = [
     {
-        key: "date_of_birth",
-        name: "Age",
-        icon: "cake",
+        key: "weight_kg",
+        name: "Weight",
+        icon: "weight",
         privateLabel: (profile: PrivateProfile) =>
-            profile.date_of_birth ? `${age(profile.date_of_birth)}` : null,
-        publicLabel: (profile: PublicProfile) => (profile.age ? `${profile.age.toString()}` : null),
+            profile.weight_kg ? `${profile.weight_kg} kg` : null,
+        publicLabel: (profile: PublicProfile) =>
+            profile.weight_kg ? `${profile.weight_kg} kg` : null,
     },
     {
         key: "height_cm",
@@ -22,20 +23,11 @@ const traitsMapping = [
             profile.height_cm ? `${profile.height_cm} cm` : null,
     },
     {
-        key: "weight_kg",
-        name: "Weight",
-        icon: "weight",
-        privateLabel: (profile: PrivateProfile) =>
-            profile.weight_kg ? `${profile.weight_kg} kg` : null,
-        publicLabel: (profile: PublicProfile) =>
-            profile.weight_kg ? `${profile.weight_kg} kg` : null,
-    },
-    {
-        key: "location",
-        name: "Region",
-        icon: "earth",
-        privateLabel: (profile: PrivateProfile) => profile.neighborhood,
-        publicLabel: (profile: PublicProfile) => profile.neighborhood,
+        key: "years_of_experience",
+        name: "Years of Experience",
+        icon: "timer-sand-complete",
+        privateLabel: (profile: PrivateProfile) => profile.years_of_experience.toString(),
+        publicLabel: (profile: PublicProfile) => profile.years_of_experience.toString() || null,
     },
     {
         key: "fighting_style",
@@ -52,11 +44,19 @@ const traitsMapping = [
         publicLabel: (profile: PublicProfile) => profile.fight_type || null,
     },
     {
-        key: "years_of_experience",
-        name: "Years of Experience",
-        icon: "timer-sand-complete",
-        privateLabel: (profile: PrivateProfile) => profile.years_of_experience.toString(),
-        publicLabel: (profile: PublicProfile) => profile.years_of_experience.toString() || null,
+        key: "date_of_birth",
+        name: "Age",
+        icon: "cake",
+        privateLabel: (profile: PrivateProfile) =>
+            profile.date_of_birth ? `${age(profile.date_of_birth)}` : null,
+        publicLabel: (profile: PublicProfile) => (profile.age ? `${profile.age.toString()}` : null),
+    },
+    {
+        key: "location",
+        name: "Region",
+        icon: "earth",
+        privateLabel: (profile: PrivateProfile) => profile.neighborhood,
+        publicLabel: (profile: PublicProfile) => profile.neighborhood,
     },
 ];
 
