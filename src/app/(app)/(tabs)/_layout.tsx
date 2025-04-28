@@ -5,9 +5,18 @@ import { useMyProfile } from "@/api/my-profile";
 import { View, ActivityIndicator } from "react-native"; // import ActivityIndicator
 import { Image } from "expo-image";
 import { cn } from "@/utils/cn";
+import { useConnection } from "@sendbird/uikit-react-native";
+import { useEffect } from "react";
 
 export default function Layout() {
     const { data: profile, isLoading } = useMyProfile(); // watch loading state
+    const { connect } = useConnection();
+
+    useEffect(() => {
+        if (profile) {
+            connect(profile.id, { nickname: profile.name || undefined });
+        }
+    }, [profile, connect]);
 
     if (isLoading) {
         return <ActivityIndicator size="large" color="black" />; // wait until profile loaded
@@ -45,6 +54,7 @@ export default function Layout() {
                     tabBarIcon: ({ color, size }: { color: string; size: number }) => (
                         <Ionicons name="trophy" size={size} color={color} />
                     ),
+                    headerShown: false,
                 }}
             />
             <Tabs.Screen
