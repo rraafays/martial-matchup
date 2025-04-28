@@ -10,19 +10,13 @@ interface Props {
 
 export const ChallengeCard: FC<Props> = ({ challenge: { profile } }) => {
     return (
-        <Link href={`/challengers/${profile.id}`} asChild>
-            <Pressable className="bg-white flex-1 rounded-lg overflow-hidden border border-neutral-200">
-                <View className="bg-black flex-1 rounded-lg overflow-hidden border">
-                    <View className="p-4 gap-5">
-                        <Text className="text-xl font-poppins-medium text-white">
-                            {profile.name}
-                        </Text>
-                    </View>
-                    <View className="flex-1 aspect-square w-full">
-                        <Image source={profile.photos[0].photo_url} className="flex-1" />
-                    </View>
-                </View>
-            </Pressable>
-        </Link>
+        <View className="bg-black flex-1 rounded-lg overflow-hidden border">
+            <View className="p-4 gap-5">
+                <Text className="text-xl font-poppins-medium text-white">{profile.name}</Text>
+            </View>
+            <View className="flex-1 aspect-square w-full">
+                <Image source={profile.photos[0].photo_url} className="flex-1" />
+            </View>
+        </View>
     );
 };

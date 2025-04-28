@@ -4,6 +4,8 @@ import { Loader } from "@/components/Loader";
 import { FlatList, View } from "react-native";
 import { Empty } from "@/components/Empty";
 import { useRefreshOnFocus } from "@/hooks/refetch";
+import { Link } from "expo-router";
+import { Pressable } from "react-native";
 
 export default function Page() {
     const { data: challengers, isFetching, isError, refetch } = useChallengers();
@@ -38,12 +40,13 @@ export default function Page() {
                 data={challengers}
                 renderItem={({ item, index }) => {
                     return (
-                        <>
-                            <ChallengeCard challenge={item} />
-                            {challengers.length % 2 !== 0 && index === challengers.length - 2 && (
-                                <View className="flex-1" />
-                            )}
-                        </>
+                        <Link href={`/challengers/${item.id}`} asChild>
+                            <Pressable className="bg-white flex-1 rounded-lg overflow-hidden border border-neutral-200">
+                                <ChallengeCard challenge={item} />
+                                {challengers.length % 2 !== 0 &&
+                                    index === challengers.length - 2 && <View className="flex-1" />}
+                            </Pressable>
+                        </Link>
                     );
                 }}
                 numColumns={2}
