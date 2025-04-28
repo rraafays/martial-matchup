@@ -1,3 +1,4 @@
+import { Stack } from "expo-router";
 import { FC } from "react";
 import { Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -21,6 +22,12 @@ export const Empty: FC<Props> = ({
 }) => {
     return (
         <SafeAreaView className="flex-1 p-5 bg-white justify-center gap-8">
+            <Stack.Screen
+                options={{
+                    headerTitle: "",
+                    headerShadowVisible: false,
+                }}
+            />
             <View className="gap-2">
                 <Text className="text-2xl font-poppins-semibold text-center">{title}</Text>
                 <Text className="text-base font-poppins-light text-center">{subTitle}</Text>

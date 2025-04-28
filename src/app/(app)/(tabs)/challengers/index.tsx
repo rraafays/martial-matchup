@@ -1,7 +1,7 @@
 import { useChallengers } from "@/api/profiles";
 import { ChallengeCard } from "@/components/ChallengeCard";
 import { Loader } from "@/components/Loader";
-import { FlatList, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { Empty } from "@/components/Empty";
 import { useRefreshOnFocus } from "@/hooks/refetch";
 import { Link } from "expo-router";
@@ -36,6 +36,9 @@ export default function Page() {
 
     return (
         <View className="flex-1 bg-white">
+            <View className="px-5 pb-5">
+                <Text className="text-3xl font-poppins-semibold">Challengers</Text>
+            </View>
             <FlatList
                 data={challengers}
                 renderItem={({ item, index }) => {
