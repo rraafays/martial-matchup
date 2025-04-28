@@ -72,21 +72,21 @@ const Page = () => {
             </ScrollView>
 
             <ForwardActionButton
-                className="absolute bottom-5 left-5 bg-white  shadow-sm h-20"
-                iconClassName="text-black text-4xl"
+                className="absolute bottom-5 left-5 bg-black shadow-sm h-20"
+                iconClassName="text-white text-4xl"
                 iconName="close"
                 onPress={handleRemove}
                 loading={removePending}
-                loaderClassName="text-black"
+                loaderClassName="text-white"
                 disabled={removePending || matchPending}
             />
             <ForwardActionButton
-                className="absolute bottom-5 right-5 bg-white  shadow-sm h-20"
-                iconClassName="text-black text-4xl"
-                iconName="chatbox-outline"
+                className="absolute bottom-5 right-5 bg-black shadow-sm h-20"
+                iconClassName="text-white text-4xl"
+                iconName="chatbubbles"
                 onPress={handleMatch}
                 loading={matchPending}
-                loaderClassName="text-black"
+                loaderClassName="text-white"
                 disabled={removePending || matchPending}
             />
         </View>
