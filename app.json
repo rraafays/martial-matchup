@@ -12,7 +12,7 @@
       "supportsTablet": true
     },
     "androidNavigationBar": {
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#000000"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,7 +33,7 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#FFFFFF"
+          "backgroundColor": "#000000"
         }
       ]
     ],
